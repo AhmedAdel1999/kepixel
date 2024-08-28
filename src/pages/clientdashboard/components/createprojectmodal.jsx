@@ -1,0 +1,164 @@
+import { useState } from "react";
+import { Dialog,DialogContent, DialogTitle, DialogTrigger } from "../../../components/ui/dialog"
+import {Button} from "../../../components/ui/button"
+import { useForm } from "react-hook-form";
+import { Icon } from "@iconify/react"
+import logo from "../../../assets/Logo.jpg"
+import woocommerceimg from "../../../assets/client/woocommerce-img.png"
+import salaimg from "../../../assets/client/sala-img.png"
+import shopifyimg from "../../../assets/client/shopify-img.png"
+import orderimg from "../../../assets/client/order-img.png"
+import easyorderimg from "../../../assets/client/easyorder-img.png"
+import wuiltimg from "../../../assets/client/wuilt-img.png"
+import takerimg from "../../../assets/client/taker-img.png"
+import wordpressimg from "../../../assets/client/wordpress-img.png"
+
+
+const CreateProject = ({setProjects,setSelectedProject}) =>{
+
+    const [openDialog,setOpenDialog] = useState(false)
+
+    return(
+        <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+            <DialogTrigger asChild>
+                <div 
+                    className="my-first-step w-full text-[#1E43FA] flex justify-between cursor-pointer"
+                >
+                    <span className="capitalize">New Project</span>
+                    <Icon icon="carbon:add" fontSize={23} />
+                </div>
+            </DialogTrigger>
+            <CreateProjectModalBody 
+              setOpenDialog={setOpenDialog} 
+              setProjects={setProjects}
+              setSelectedProject={setSelectedProject}
+            />
+        </Dialog>
+    )
+}
+export default CreateProject
+
+export const CreateProjectModalBody = ({setOpenDialog,setProjects,setSelectedProject}) => {
+
+    const cmsTypes = [
+        {name:"woocommerce",value:"woocommerce",icon:woocommerceimg},
+        {name:"sala",value:"sala",icon:salaimg},
+        {name:"shopify",value:"shopify",icon:shopifyimg},
+        {name:"order",value:"order",icon:orderimg},
+        {name:"easyorder",value:"easyorder",icon:easyorderimg},
+        {name:"wuilt",value:"wuilt",icon:wuiltimg},
+        {name:"taker",value:"taker",icon:takerimg},
+        {name:"wordpress",value:"wordpress",icon:wordpressimg},
+    ]
+
+
+    const {register,handleSubmit,formState,watch} = useForm({
+        defaultValues:{ 
+            projectName:"",url:"",cmsType:"wordpress"
+        },
+        mode:"onChange"
+    })
+    const {errors} = formState
+    const currentCMSType = watch("cmsType")
+
+    const onSubmit = (data) =>{
+        setOpenDialog(false)
+        setProjects((prev)=>[...prev,data.projectName])
+        setSelectedProject(data.projectName)
+    }
+
+    return(
+        <DialogContent className="!min-w-[700px]">
+               <DialogTitle>
+                <div className="flex justify-center items-center gap-4 pb-5 border-b-2">
+                    <h3 className="font-bold text-2xl">Welcome to</h3>
+                    <img alt="logo" src={logo} className="h-[22px]" />
+                </div>
+               </DialogTitle>
+               <div className="flex flex-col gap-4">
+                    <h3 className="font-bold text-xl">New Project</h3>
+                    <p className="text-[#757575] max-w-[520px]">
+                        Sorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
+                    </p>
+                    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+                          <div className="flex flex-col gap-1.5">
+                              <label className="font-[600] text-sm">Project Name</label>
+                              <input
+                                 className="px-4 py-2 outline-none border-[1px] border-[#C1D5F6] rounded-[8px] " 
+                                 type="text"
+                                 placeholder="Give your Project a name"
+                                 {...register("projectName", {
+                                    required: "projectName is required",
+                                  })}
+                               />
+                               {errors.projectName&&<span className="text-red-600">{errors.projectName.message}</span>}
+                           </div>
+
+                           <div className="flex flex-col gap-1.5">
+                              <label className="font-[600] text-sm">URL</label>
+                              <input
+                                 className="px-4 py-2 outline-none border-[1px] border-[#C1D5F6] rounded-[8px] " 
+                                 type="text"
+                                 placeholder="Enter URL"
+                                 {...register("url", {
+                                    required: "url is required",
+                                    pattern: {
+                                        value: /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+(com|org|net|edu|gov|mil|info|io|co|biz|me|us|uk|in|ca|au|de|fr|jp)(\/[^\s]*)?$/,
+                                        message: "Invalid url format",
+                                    },
+                                  })}
+                               />
+                               {errors.url&&<span className="text-red-600">{errors.url.message}</span>}
+                           </div>
+                           <div className="flex flex-col gap-1.5">
+                               <label className="font-[600] text-sm">CMS Type</label>
+                               <div className="flex flex-wrap gap-4">
+                                    {
+                                        cmsTypes.map((item,index)=>{
+                                            return(
+                                                <div key={index}>
+                                                    <input 
+                                                        className="hidden" value={item.value}
+                                                        type="radio" name="cms" id={item.name} 
+                                                        placeholder="Enter URL"
+                                                        {...register("cmsType")}
+                                                     />
+                                                    <label
+                                                        className={`${currentCMSType===item.value?"bg-[#00887A]":""} 
+                                                         cursor-pointer flex items-center justify-center w-[150px] h-[46px] py-2 px-4 border rounded-md`
+                                                        } 
+                                                        htmlFor={item.name}
+                                                    >
+                                                        <img src={item.icon} alt={item.name} />
+                                                    </label>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                               </div>
+                           </div>
+
+                           <div className="flex justify-end gap-4">
+                                <button 
+                                    type="button" 
+                                    onClick={()=>setOpenDialog(false)}
+                                    className="capitalize font-bold text-[#1E43FA]"
+                                >
+                                    skip
+                                </button>
+                                <Button 
+                                    type="submit"
+                                    className="capitalize"
+                                    style={{
+                                        background: "linear-gradient(112deg, #16F2D1 -47.55%, #1294B9 35.23%, #0C259C 133.36%), var(--Brand-Primary, #1E43FA)"
+                                    }}
+                                >
+                                    Create Project
+                                </Button>
+                           </div>
+                    </form>
+               </div>
+        </DialogContent>
+    )
+}
