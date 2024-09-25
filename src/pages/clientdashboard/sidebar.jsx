@@ -49,7 +49,7 @@ const DashboardSidebar = () =>{
 
     return(
         <div 
-          className={`bg-white h-screen max-h-screen overflow-auto min-w-[300px]
+          className={`bg-white h-screen max-h-screen overflow-auto min-w-[320px]
           border-r-[1px] border-t-[1px] flex flex-col
           `}>
 
@@ -115,7 +115,7 @@ const DashboardSidebar = () =>{
                                 if(!item.isDropDown){
                                     return(
                                         <Link key={index} to={item.path} 
-                                         className={`flex ${item.notFinshed?"":"gap-x-3"} items-center rounded-lg px-4 py-1 
+                                         className={`flex gap-x-3 items-center rounded-lg px-4 py-1 
                                           ${checkPathName(item.path)?"bg-[#F9F9F9] text-[#1E43FA]":"text-[#757575]"}`}
                                          >
                                             {item.icon}

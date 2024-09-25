@@ -15,8 +15,10 @@ import CreateDestinationPage from './pages/clientdashboard/pages/createdetinatio
 import AutomationPage from './pages/clientdashboard/pages/automationPage';
 import AnalyticPage from './pages/clientdashboard/pages/analyticPage';
 import SettingsPage from './pages/clientdashboard/pages/settingsPage';
+import NotFoundPage from './pages/clientdashboard/pages/notFoundPage';
 
 import "./App.css"
+
 
 
 
@@ -28,6 +30,7 @@ function App() {
 
 
   const router = createBrowserRouter([
+    {path: '*',element: <NotFoundPage />},
     {path: '/',element: <LoginPage />},
     {path: '/signup',element: <SignUpPage />},
     {
