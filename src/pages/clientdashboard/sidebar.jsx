@@ -49,8 +49,8 @@ const DashboardSidebar = () =>{
 
     return(
         <div 
-          className={`bg-white h-screen max-h-screen overflow-auto min-w-[320px]
-          border-r-[1px] border-t-[1px] flex flex-col
+          className={`bg-white dark:bg-[#171C32] h-screen max-h-screen overflow-auto min-w-[320px]
+          border-r-[1px] border-t-[1px] dark:border-none flex flex-col
           `}>
 
             <div className="grow flex flex-col p-4">
@@ -63,12 +63,12 @@ const DashboardSidebar = () =>{
                                 className="h-[45px] w-[48px] rounded-md"
                                 />
                                 <div>
-                                    <h4 className="font-bold m-0">Kemarq</h4>
-                                    <p className="text-[#b0afaf]">Default</p>
+                                    <h4 className="font-bold m-0 dark:text-white">Kemarq</h4>
+                                    <p className="text-[#b0afaf] dark:text-[#cfcfcf]">Default</p>
                                 </div>
                             </div>
                             <div className="border rounded">
-                                <Icon icon="ri:arrow-left-s-line" fontSize={33} />
+                                <Icon icon="ri:arrow-left-s-line" fontSize={33} className="dark:text-white" />
                             </div>
                         </div>
                         <div className="px-2 flex flex-col gap-2">
@@ -78,7 +78,7 @@ const DashboardSidebar = () =>{
                            />
                             <Accordion type="single" collapsible className="w-full">
                                 <AccordionItem value="item-1" className="border-none">
-                                    <AccordionTrigger className="no-underline hover:no-underline text-[#757575] p-0">
+                                    <AccordionTrigger className="no-underline hover:no-underline text-[#757575] dark:text-[#cfcfcf] p-0">
                                         {
                                             selectedProject?selectedProject:"Select Project"
                                         }
@@ -93,7 +93,7 @@ const DashboardSidebar = () =>{
                                                     className={`flex items-center gap-x-2 cursor-pointer ${selectedProject===project?"text-[#00887A]":""}`}
                                                     onClick={()=>setSelectedProject(project)}
                                                     >
-                                                        <span className="text-[#757575]">{project}</span>
+                                                        <span className="text-[#757575] dark:text-[#cfcfcf]">{project}</span>
                                                         {
                                                             selectedProject===project&&
                                                             <Icon icon="material-symbols:check" fontSize={20} />
@@ -109,14 +109,15 @@ const DashboardSidebar = () =>{
                             </Accordion>
                         </div>
                     </div>
-                    <nav className="flex flex-col gap-y-3 pt-5 border-t-2">
+                    <nav className="flex flex-col gap-y-3 pt-5 border-t-2 dark:border-[#D3D3D3]">
                         {
                             routes.map((item,index)=>{
                                 if(!item.isDropDown){
                                     return(
                                         <Link key={index} to={item.path} 
                                          className={`flex gap-x-3 items-center rounded-lg px-4 py-1 
-                                          ${checkPathName(item.path)?"bg-[#F9F9F9] text-[#1E43FA]":"text-[#757575]"}`}
+                                          ${checkPathName(item.path)?"bg-[#F9F9F9] dark:bg-[#0B1029] text-[#1E43FA] dark:text-white":
+                                            "text-[#757575] dark:text-[#cfcfcf]"}`}
                                          >
                                             {item.icon}
                                             <span className="capitalize">{item.name}</span>
@@ -136,7 +137,8 @@ const DashboardSidebar = () =>{
                                              ${(route.pathname.includes(item.name) ||
                                                item.dropdownmenu.map((item)=>item.relatedPages).flat()
                                                .some(substr => route.pathname.includes(substr))
-                                            )?"bg-[#F9F9F9] text-[#1E43FA]":"text-[#757575]"}
+                                            )?"bg-[#F9F9F9] dark:bg-[#0B1029] text-[#1E43FA] dark:text-white":
+                                            "text-[#757575] dark:text-[#cfcfcf]"}
                                             `}>
                                                 <div 
                                                   className={`flex gap-x-3 items-center`}>
@@ -153,7 +155,7 @@ const DashboardSidebar = () =>{
                                                             className={`flex gap-x-3 items-center rounded-lg
                                                             ${(checkPathName(menuitem.path) ||
                                                             menuitem.relatedPages.some(substr => route.pathname.includes(substr))
-                                                            )?"text-[#1E43FA]":"text-[#757575]"}`}
+                                                            )?"text-[#1E43FA]":"text-[#757575] dark:text-[#cfcfcf]"}`}
                                                             >
                                                                 {menuitem.icon}
                                                                 <span className="capitalize">{menuitem.name}</span>
@@ -175,21 +177,22 @@ const DashboardSidebar = () =>{
                     <Link 
                        to={`/dashboard/settings`}
                        className={`flex gap-x-3 items-center rounded-lg px-4 py-1 
-                        ${checkPathName("settings")?"bg-[#F9F9F9] text-[#1E43FA]":"text-[#757575]"}`}
+                        ${checkPathName("settings")?"bg-[#F9F9F9] dark:bg-[#0B1029] text-[#1E43FA] dark:text-white":
+                        "text-[#757575] dark:text-[#cfcfcf]"}`}
                     > 
                       <Icon icon="ic:round-settings" fontSize={20} />
                       <span className="capitalize">Settings</span>
                     </Link>
-                    <Button className="text-[#757575] !bg-inherit flex justify-start items-center gap-3">
+                    <Button className="text-[#757575] dark:text-[#cfcfcf] !bg-inherit flex justify-start items-center gap-3">
                        <Icon icon="solar:logout-2-broken" fontSize={20} />
                        <span className="">Log Out</span>
                     </Button>
                 </div>
             </div>
-            <div className="w-full self-end border-t-2 p-5">
+            <div className="w-full self-end px-4 ">
                <Popover>
-                    <PopoverTrigger>
-                        <div className="flex gap-x-4 items-center">
+                    <PopoverTrigger className="min-w-full">
+                        <div className="flex gap-x-4 py-5 border-t-2 dark:border-[#D3D3D3] items-center">
                             <div className="w-10 min-w-10 h-10 rounded-[50%] overflow-hidden">
                                 <img 
                                 alt="avatar" src={avatar} loading="lazy" 
@@ -197,8 +200,8 @@ const DashboardSidebar = () =>{
                                 />
                             </div>
                             <div className="overflow-hidden">
-                                <h4 className="m-0 font-bold text-left">Mostafa Hatata</h4>
-                                <p className="truncate text-sm">mostafa.hatata@tryord.net</p>
+                                <h4 className="m-0 font-bold text-left dark:text-white">Mostafa Hatata</h4>
+                                <p className="truncate text-sm dark:text-[#cfcfcf]">mostafa.hatata@tryord.net</p>
                             </div>
                         </div>
                     </PopoverTrigger>

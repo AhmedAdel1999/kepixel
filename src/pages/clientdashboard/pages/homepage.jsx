@@ -20,11 +20,11 @@ const HomePage = () =>{
             {/* <SecondaryHomeCard /> */}
             <PrimaryHomeCard />
             <div className="grid grid-cols-12 gap-4">
-                <Card className="xs:col-span-12 md:col-span-6">
+                <Card className="xs:col-span-12 md:col-span-6 dark:border-none">
                     <CardContent className="pt-10 grid grid-cols-12 gap-x-6">
                         <div className="col-span-7 flex flex-col gap-4">
-                            <h4 className="text-[#0E1B26] font-[600] m-0">Source</h4>
-                            <p className="m-0 text-[#757575]">
+                            <h4 className="text-[#0E1B26] dark:text-white font-[600] m-0">Source</h4>
+                            <p className="m-0 text-[#757575] dark:text-[#cfcfcf]">
                                 A source, whether it's a website, server library, mobile SDK,
                                 or cloud app, sends data to Journify. Add sources to gather insights
                                 into your customers and product usage. Create a source for each website
@@ -44,11 +44,11 @@ const HomePage = () =>{
                         </div>
                     </CardContent>
                 </Card>
-                <Card className="xs:col-span-12 md:col-span-6">
+                <Card className="xs:col-span-12 md:col-span-6 dark:border-none">
                     <CardContent className="pt-10 grid grid-cols-12 gap-x-6">
                         <div className="col-span-7 flex flex-col gap-4">
-                            <h4 className="text-[#0E1B26] font-[600] m-0">Destinations</h4>
-                            <p className="m-0 text-[#757575]">
+                            <h4 className="text-[#0E1B26] dark:text-white font-[600] m-0">Destinations</h4>
+                            <p className="m-0 text-[#757575] dark:text-[#cfcfcf]">
                                 A source, whether it's a website, server library, mobile SDK,
                                 or cloud app, sends data to Journify. Add sources to gather insights
                                 into your customers and product usage. Create a source for each website
@@ -76,17 +76,17 @@ export default HomePage
 
 const PrimaryHomeCard = () =>{
     return(
-        <Card>
+        <Card className="dark:border-none">
             <CardHeader>
                 <CardTitle>Your Integration</CardTitle>
-                <CardDescription>
+                <CardDescription className="dark:text-[#cfcfcf]">
                     A visual representation providing a comprehensive overview of all your data syncs.
                 </CardDescription>
             </CardHeader>
             <CardContent>
                 <div className="border-[2px] border-[#21D1B7] rounded-md grid grid-cols-12">
                     <div className="xs:col-span-12 md:col-span-6 py-10 px-6 flex flex-col gap-6">
-                        <p className="text-[#757575] m-0">
+                        <p className="text-[#757575] dark:text-[#cfcfcf] m-0">
                             Welcome to  Kepixel! We are thrilled to have you on board.
                             Explore our range of features and enhance your experience.
                             Are you ready to get started?

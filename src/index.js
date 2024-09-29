@@ -10,6 +10,7 @@ import { ProjectProvider } from './contexts/projectcontext';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 import './index.css';
+import { ThemeProvider } from './contexts/themecontext';
 
 
 
@@ -20,13 +21,15 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
        <PersistGate loading={null} persistor={persistor}>
-        <AuthProvider>
-          <ProjectProvider>
-           <GoogleOAuthProvider clientId='737809850359-l0dlilcelq8b7updja3dk67bpf27j2lj.apps.googleusercontent.com'>
-              <App />
-            </GoogleOAuthProvider>
-          </ProjectProvider> 
+        <ThemeProvider>
+          <AuthProvider>
+            <ProjectProvider>
+              <GoogleOAuthProvider clientId='737809850359-l0dlilcelq8b7updja3dk67bpf27j2lj.apps.googleusercontent.com'>
+                <App />
+              </GoogleOAuthProvider>
+            </ProjectProvider> 
           </AuthProvider>
+        </ThemeProvider>
        </PersistGate>
     </Provider>
   </React.StrictMode>

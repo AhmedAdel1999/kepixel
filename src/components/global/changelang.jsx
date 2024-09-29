@@ -11,13 +11,13 @@ export default function ChangeLang () {
         <DropdownMenu onOpenChange={()=>setOpen(!open)}>
             <DropdownMenuTrigger className="outline-none" asChild>
                 <button className="flex gap-x-1">
-                   <Icon icon="ant-design:global-outlined" className="translate-y-[2px]" fontSize={20} />
-                   <span className="text-[16px]">{lang}</span>
+                   <Icon icon="ant-design:global-outlined" className="translate-y-[2px] text-black dark:text-white" fontSize={20} />
+                   <span className="text-[16px] text-black dark:text-white">{lang}</span>
                    {
                     !open?
-                        <Icon icon="iconamoon:arrow-down-2" fontSize={22} />
+                        <Icon icon="iconamoon:arrow-down-2" className="text-black dark:text-white" fontSize={22} />
                         :
-                        <Icon icon="iconamoon:arrow-up-2" fontSize={22} />
+                        <Icon icon="iconamoon:arrow-up-2" className="text-black dark:text-white" fontSize={22} />
                    }
                    
                 </button>

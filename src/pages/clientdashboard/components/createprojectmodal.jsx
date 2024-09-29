@@ -1,16 +1,14 @@
 import { useState } from "react";
+import { Icon } from "@iconify/react";
 import { Dialog,DialogContent, DialogTitle, DialogTrigger } from "../../../components/ui/dialog"
 import {Button} from "../../../components/ui/button"
 import { useForm } from "react-hook-form";
-import { Icon } from "@iconify/react"
 import logo from "../../../assets/Logo.jpg"
-import woocommerceimg from "../../../assets/client/woocommerce-img.png"
 import salaimg from "../../../assets/client/sala-img.png"
 import shopifyimg from "../../../assets/client/shopify-img.png"
 import orderimg from "../../../assets/client/order-img.png"
 import easyorderimg from "../../../assets/client/easyorder-img.png"
 import wuiltimg from "../../../assets/client/wuilt-img.png"
-import takerimg from "../../../assets/client/taker-img.png"
 import wordpressimg from "../../../assets/client/wordpress-img.png"
 
 
@@ -19,13 +17,13 @@ const CreateProject = ({setProjects,setSelectedProject}) =>{
     const [openDialog,setOpenDialog] = useState(false)
 
     return(
-        <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+        <Dialog open={openDialog} onOpenChange={setOpenDialog} className="dark:!bg-black">
             <DialogTrigger asChild>
                 <div 
                     className="my-first-step w-full text-[#1E43FA] flex justify-between cursor-pointer"
                 >
-                    <span className="capitalize">New Project</span>
-                    <Icon icon="carbon:add" fontSize={23} />
+                    <span className="capitalize dark:text-white">New Project</span>
+                    <Icon icon="carbon:add" fontSize={23} className="dark:text-white" />
                 </div>
             </DialogTrigger>
             <CreateProjectModalBody 
@@ -41,14 +39,12 @@ export default CreateProject
 export const CreateProjectModalBody = ({setOpenDialog,setProjects,setSelectedProject}) => {
 
     const cmsTypes = [
-        {name:"woocommerce",value:"woocommerce",icon:woocommerceimg},
-        {name:"sala",value:"sala",icon:salaimg},
+        {name:"wordpress",value:"wordpress",icon:wordpressimg},
         {name:"shopify",value:"shopify",icon:shopifyimg},
+        {name:"sala",value:"sala",icon:salaimg},
         {name:"order",value:"order",icon:orderimg},
         {name:"easyorder",value:"easyorder",icon:easyorderimg},
         {name:"wuilt",value:"wuilt",icon:wuiltimg},
-        {name:"taker",value:"taker",icon:takerimg},
-        {name:"wordpress",value:"wordpress",icon:wordpressimg},
     ]
 
 
@@ -125,12 +121,16 @@ export const CreateProjectModalBody = ({setOpenDialog,setProjects,setSelectedPro
                                                         {...register("cmsType")}
                                                      />
                                                     <label
-                                                        className={`${currentCMSType===item.value?"bg-[#00887A]":""} 
-                                                         cursor-pointer flex items-center justify-center w-[150px] h-[46px] py-2 px-4 border rounded-md`
+                                                        className={`${currentCMSType===item.value?"bg-[#1E43FA]":""} 
+                                                         realtive cursor-pointer flex gap-3 items-center justify-center w-[200px] h-[46px] py-2 px-4 border rounded-md`
                                                         } 
                                                         htmlFor={item.name}
                                                     >
-                                                        <img src={item.icon} alt={item.name} />
+                                                        <img src={item.icon} alt={item.name} className="z-10" />
+                                                        {
+                                                            currentCMSType===item.value&&
+                                                            <Icon icon="weui:done-filled" className="text-white" fontSize={20} />
+                                                        }
                                                     </label>
                                                 </div>
                                             )
