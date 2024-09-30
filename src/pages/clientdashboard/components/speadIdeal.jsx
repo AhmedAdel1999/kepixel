@@ -1,10 +1,14 @@
 import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material'
 import { Popover,PopoverContent,PopoverTrigger } from '../../../components/ui/popover'
+import { useTheme } from '../../../contexts/themecontext'
 import { Icon } from '@iconify/react'
 import { useState } from 'react'
 
+
 const SpeadDialComponent = () =>{
     const [open,setOpen] = useState(true)
+    const {theme} = useTheme()
+    const isDark = theme === "dark"
     return (
         <SpeedDial
             open={open}
@@ -15,7 +19,12 @@ const SpeadDialComponent = () =>{
             icon={<SpeedDialIcon />}
         >
             <SpeedDialAction
-                sx={{width:"auto",height:"auto",borderRadius:"15px"}}
+                sx={{
+                    width:"auto",height:"auto",borderRadius:"15px",
+                    backgroundColor:isDark?"#171C32 !important":"",
+                    color:isDark?"#cfcfcf":"",
+                    border:isDark&&"1px solid #cfcfcf",
+                }}
                 icon={
                     <div className='px-2 py-0.5 flex items-center gap-1'>
                         <Icon icon="ri:whatsapp-fill" color='#1E43FA' fontSize={23} />
@@ -24,7 +33,13 @@ const SpeadDialComponent = () =>{
                 } 
             />
             <SpeedDialAction
-                sx={{width:"auto",height:"auto",borderRadius:"15px"}}
+                sx={{
+                    width:"auto",height:"auto",borderRadius:"15px",
+                    backgroundColor:isDark?"#171C32 !important":"",
+                    color:isDark?"#cfcfcf":"",
+                    border:isDark&&"1px solid #cfcfcf",
+                }}
+                
                 icon={
                     <Popover>
                         <PopoverTrigger asChild>
@@ -35,7 +50,7 @@ const SpeadDialComponent = () =>{
                         </PopoverTrigger>
                         <PopoverContent
                             onClick={(e)=>e.stopPropagation()}
-                            className="w-[320px] shadow-none border-none p-0 flex flex-col gap-4"
+                            className={`w-[320px] shadow-none border-none p-0 flex flex-col gap-4 ${isDark?"bg-[#171C32] text-[#CFCFCF]":""}`}
                             avoidCollisions sideOffset={40} 
                             alignOffset={20} side="left" align="bottom"
                         >
@@ -47,7 +62,7 @@ const SpeadDialComponent = () =>{
                             <div className='p-3 rounded-md shadow-[0_0_7px_#ddd] flex items-center gap-4'>
                                 <textarea 
                                    placeholder='Message'
-                                   className="grow h-[30px] focus:outline-none focus:ring-0 focus:border-none border-none resize-none overflow-y-hidden"
+                                   className="grow h-[30px] focus:outline-none focus:ring-0 focus:border-none border-none bg-inherit resize-none overflow-y-hidden"
                                 />
                                 <div className='flex gap-2'>
                                    <Icon icon="fluent:emoji-multiple-20-filled" fontSize={20} />

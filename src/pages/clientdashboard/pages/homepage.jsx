@@ -4,9 +4,13 @@ import { Button } from "../../../components/ui/button"
 import { Link } from "react-router-dom"
 import Diagram from "../components/diagram"
 import { Icon } from "@iconify/react"
+import { useTheme } from "../../../contexts/themecontext"
 import IntegrationCardImg from "../../../assets/client/integration-card-img.png"
 import SourceCardImg from "../../../assets/client/source-card-img.png"
+import SourceDarkCardImg from "../../../assets/client/source-darkcard-img.png"
 import DestinationsCardImg from "../../../assets/client/destination-card-img.png"
+import DestinationsDarkCardImg from "../../../assets/client/destination-darkcard-img.png"
+
 
 
 
@@ -14,6 +18,7 @@ import DestinationsCardImg from "../../../assets/client/destination-card-img.png
 
 const HomePage = () =>{
 
+     const {theme} = useTheme()
 
     return(
         <div className="flex flex-col gap-4">
@@ -24,7 +29,7 @@ const HomePage = () =>{
                     <CardContent className="pt-10 grid grid-cols-12 gap-x-6">
                         <div className="col-span-7 flex flex-col gap-4">
                             <h4 className="text-[#0E1B26] dark:text-white font-[600] m-0">Source</h4>
-                            <p className="m-0 text-[#757575] dark:text-[#cfcfcf]">
+                            <p className="m-0 text-sm text-[#757575] dark:text-[#cfcfcf]">
                                 A source, whether it's a website, server library, mobile SDK,
                                 or cloud app, sends data to Journify. Add sources to gather insights
                                 into your customers and product usage. Create a source for each website
@@ -39,7 +44,7 @@ const HomePage = () =>{
                               alt="source-card-img"
                               className="h-[250px]"
                               loading="lazy"
-                              src={SourceCardImg}
+                              src={theme==="light"?SourceCardImg:SourceDarkCardImg}
                             />
                         </div>
                     </CardContent>
@@ -48,7 +53,7 @@ const HomePage = () =>{
                     <CardContent className="pt-10 grid grid-cols-12 gap-x-6">
                         <div className="col-span-7 flex flex-col gap-4">
                             <h4 className="text-[#0E1B26] dark:text-white font-[600] m-0">Destinations</h4>
-                            <p className="m-0 text-[#757575] dark:text-[#cfcfcf]">
+                            <p className="m-0 text-sm text-[#757575] dark:text-[#cfcfcf]">
                                 A source, whether it's a website, server library, mobile SDK,
                                 or cloud app, sends data to Journify. Add sources to gather insights
                                 into your customers and product usage. Create a source for each website
@@ -63,7 +68,7 @@ const HomePage = () =>{
                               alt="source-card-img"
                               className="h-[250px]"
                               loading="lazy"
-                              src={DestinationsCardImg}
+                              src={theme==="dark"?DestinationsDarkCardImg:DestinationsCardImg}
                             />
                         </div>
                     </CardContent>
@@ -78,8 +83,8 @@ const PrimaryHomeCard = () =>{
     return(
         <Card className="dark:border-none">
             <CardHeader>
-                <CardTitle>Your Integration</CardTitle>
-                <CardDescription className="dark:text-[#cfcfcf]">
+                <CardTitle className="text-lg">Your Integration</CardTitle>
+                <CardDescription className="text-sm dark:text-[#cfcfcf]">
                     A visual representation providing a comprehensive overview of all your data syncs.
                 </CardDescription>
             </CardHeader>
@@ -97,9 +102,11 @@ const PrimaryHomeCard = () =>{
                                 background: "linear-gradient(112deg, #16F2D1 -47.55%, #1294B9 35.23%, #0C259C 133.36%), var(--Brand-Primary, #1E43FA)"
                             }}
                         >
-                           <Link className="flex items-center gap-2" to={"/dashboard/datasource"}>
+                           <Link className="flex items-center gap-2 dark:text-[#ECF5FF]" to={"/dashboard/datasource"}>
                                 <Icon icon="ic:twotone-add" fontSize={22} />
-                                <span className="capitalize font-[500]">Creat New Source</span>
+                                <span className="capitalize text-[14px] font-[600]">
+                                    Creat New Source
+                                </span>
                            </Link>
                         </Button>
                     </div>

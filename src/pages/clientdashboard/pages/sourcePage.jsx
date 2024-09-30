@@ -1,14 +1,17 @@
 import { Card,CardContent,CardDescription,CardHeader,CardTitle } from "../../../components/ui/card"
 import TableShared from "../../../components/global/tableShared"
 import { Button } from "../../../components/ui/button"
+import { useTheme } from "../../../contexts/themecontext"
 import { Icon } from "@iconify/react"
 import { Link } from "react-router-dom"
 import SourceCardImg from "../../../assets/client/source-card-bigimg.png"
+import SourceDarkCardImg from "../../../assets/client/source-darkcard-bigimg.png"
 import googlemanagerlogo from "../../../assets/client/google-tag-manager-logo.png"
 import googleanalyticlogo from "../../../assets/client/google-analytic-logo.png"
 import metalogo from "../../../assets/client/meta-logo.png"
 import hubspotlogo from "../../../assets/client/hubSpot-Logo.png"
 import snapchatlogo from "../../../assets/client/snapchat-logo.png"
+
 
 
 
@@ -23,11 +26,13 @@ const SourcePage = () =>{
 export default SourcePage
 
 const SourcePrimaryComponent = () =>{
+    const {theme} = useTheme()
+    const isDark = theme === "dark"
     return(
-        <Card>
+        <Card className="dark:border-none dark:bg-[#171C32]">
             <CardHeader>
-                <CardTitle>Your Integration</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-lg font-[600]">Your Integration</CardTitle>
+                <CardDescription className="text-sm dark:text-[#cfcfcf]">
                     A visual representation providing a comprehensive overview of all your data syncs.
                 </CardDescription>
             </CardHeader>
@@ -35,20 +40,20 @@ const SourcePrimaryComponent = () =>{
                 <div className="border-[2px] border-[#21D1B7] rounded-md grid grid-cols-12">
                     <div className="xs:col-span-12 md:col-span-7 py-10 px-6 flex flex-col gap-6">
                         <h4 className="font-[600] text-[24px]">Sources</h4>
-                        <p className="text-[#757575] m-0">
+                        <p className="text-[#757575] dark:text-[#cfcfcf] m-0">
                             Sources can be websites, libraries, mobile SDKs, POS, or cloud
                             applications that send data into Journify. Gather customer data
                             to understand how your product is being used and who your customers are.
                         </p>
                         <Button 
-                            className="w-fit"
+                            className="w-fit dark:text-[#ECF5FF]"
                             style={{
                                 background: "linear-gradient(112deg, #16F2D1 -47.55%, #1294B9 35.23%, #0C259C 133.36%), var(--Brand-Primary, #1E43FA)"
                             }}
                         >
                             <Link className="flex gap-2" to={"/dashboard/datasource"}>
                                 <Icon icon="ic:twotone-add" fontSize={22} />
-                                <span className="capitalize font-[500]">New Source</span>
+                                <span className="capitalize text-sm font-[600]">New Source</span>
                             </Link>
                         </Button>
                     </div>
@@ -57,7 +62,7 @@ const SourcePrimaryComponent = () =>{
                             alt="source-card-img"
                             className="h-full "
                             loading="lazy"
-                            src={SourceCardImg}
+                            src={isDark?SourceDarkCardImg:SourceCardImg}
                         />
                     </div>
                 </div>
@@ -127,11 +132,11 @@ const SourceSecandryComponent = () =>{
     ]
 
     return(
-        <Card>
+        <Card className="dark:border-none dark:bg-[#171C32]">
             <CardHeader className="flex flex-row xs:flex-wrap md:flex-nowrap justify-between gap-6">
                 <div className="md:max-w-[660px]">
-                    <CardTitle>Your Integration</CardTitle>
-                    <CardDescription className="mt-2">
+                    <CardTitle className="text-lg font-[600]">Your Integration</CardTitle>
+                    <CardDescription className="mt-2 dark:text-[#cfcfcf]">
                         Sources can be websites, libraries, mobile SDKs, POS, or
                         cloud applications that send data into Journify. Gather
                         customer data to understand how your product is being used
@@ -139,14 +144,14 @@ const SourceSecandryComponent = () =>{
                     </CardDescription>
                 </div>
                 <Button 
-                    className="w-fit !m-0"
+                    className="w-fit !m-0 dark:text-[#ECF5FF]"
                     style={{
                         background: "linear-gradient(112deg, #16F2D1 -47.55%, #1294B9 35.23%, #0C259C 133.36%), var(--Brand-Primary, #1E43FA)"
                     }}
                 >
                     <Link className="flex gap-2" to={"/dashboard/datasource"}>
                         <Icon icon="ic:twotone-add" fontSize={22} />
-                        <span className="capitalize font-[500]">New Source</span>
+                        <span className="capitalize text-sm font-[600]">New Source</span>
                     </Link>
                 </Button>
             </CardHeader>

@@ -1,3 +1,4 @@
+import { useTheme } from "../../contexts/themecontext";
 import { Table,TableBody,TableCell,TableHead,TableHeader,TableRow, } from "../ui/table"
 import { Icon } from "@iconify/react";
 import Pagination from '@mui/material/Pagination';
@@ -7,6 +8,8 @@ export default function TableShared ({tableBody,tableHeader}) {
 
     const itemsPerPage = 5
     const totalPages = Math.ceil(tableBody.length/itemsPerPage)
+    const {theme} = useTheme()
+    const isDark = theme === "dark"
     
     return(
         <div style={{ boxShadow: "0px 0px 12px 0px rgba(0, 0, 0, 0.10)" }}
@@ -14,7 +17,7 @@ export default function TableShared ({tableBody,tableHeader}) {
         >
             <Table className="w-full min-w-[1100px] overflow-hidden">
                 <TableHeader>
-                    <TableRow>
+                    <TableRow className="dark:bg-white">
                         {
                             tableHeader.map((item,index)=>{
                                 return(
@@ -26,7 +29,7 @@ export default function TableShared ({tableBody,tableHeader}) {
                         }
                     </TableRow>
                 </TableHeader>
-                <TableBody className="bg-[#F9F9F9]">
+                <TableBody className="bg-[#F9F9F9] dark:bg-[#0B1029]">
                     {
                         tableBody.map((tablerow,index)=>{
                             return(
@@ -56,8 +59,10 @@ export default function TableShared ({tableBody,tableHeader}) {
                             sx={{
                                 fontSize:16,
                                 fontWeight:"bold",
+                                color:isDark&&"#fff",
                                 '&.Mui-selected':{
-                                    color:"#0C259C"
+                                    color:"#0C259C",
+                                    background:isDark&&"#fff",
                                 }
                             }}
                         />

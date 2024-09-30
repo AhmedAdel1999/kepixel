@@ -4,12 +4,14 @@ import { Dialog,DialogContent, DialogTitle, DialogTrigger } from "../../../compo
 import {Button} from "../../../components/ui/button"
 import { useForm } from "react-hook-form";
 import logo from "../../../assets/Logo.jpg"
+import darklogo from "../../../assets/dark-Logo.png"
 import salaimg from "../../../assets/client/sala-img.png"
 import shopifyimg from "../../../assets/client/shopify-img.png"
 import orderimg from "../../../assets/client/order-img.png"
 import easyorderimg from "../../../assets/client/easyorder-img.png"
 import wuiltimg from "../../../assets/client/wuilt-img.png"
 import wordpressimg from "../../../assets/client/wordpress-img.png"
+import { useTheme } from "../../../contexts/themecontext";
 
 
 const CreateProject = ({setProjects,setSelectedProject}) =>{
@@ -17,7 +19,7 @@ const CreateProject = ({setProjects,setSelectedProject}) =>{
     const [openDialog,setOpenDialog] = useState(false)
 
     return(
-        <Dialog open={openDialog} onOpenChange={setOpenDialog} className="dark:!bg-black">
+        <Dialog open={openDialog} onOpenChange={setOpenDialog}>
             <DialogTrigger asChild>
                 <div 
                     className="my-first-step w-full text-[#1E43FA] flex justify-between cursor-pointer"
@@ -37,6 +39,9 @@ const CreateProject = ({setProjects,setSelectedProject}) =>{
 export default CreateProject
 
 export const CreateProjectModalBody = ({setOpenDialog,setProjects,setSelectedProject}) => {
+
+     const {theme} = useTheme()
+     const isDark = theme === "dark"
 
     const cmsTypes = [
         {name:"wordpress",value:"wordpress",icon:wordpressimg},
@@ -64,24 +69,30 @@ export const CreateProjectModalBody = ({setOpenDialog,setProjects,setSelectedPro
     }
 
     return(
-        <DialogContent className="!min-w-[700px]">
+        <DialogContent className={`!min-w-[700px] ${isDark&&"bg-[#171C32] border-none text-white"}`}>
                <DialogTitle>
-                <div className="flex justify-center items-center gap-4 pb-5 border-b-2">
-                    <h3 className="font-bold text-2xl">Welcome to</h3>
-                    <img alt="logo" src={logo} className="h-[22px]" />
+                <div className={`
+                    flex justify-center items-center gap-4 pb-5 border-b-2 
+                    ${isDark&&"border-[#242D5A] text-white"}`
+                }>
+                    <h3 className="font-[600] text-2xl">Welcome to</h3>
+                    <img alt="logo" src={isDark?darklogo:logo} className="h-[22px]" />
                 </div>
                </DialogTitle>
                <div className="flex flex-col gap-4">
-                    <h3 className="font-bold text-xl">New Project</h3>
-                    <p className="text-[#757575] max-w-[520px]">
+                    <h3 className="font-[600] text-lg">New Project</h3>
+                    <p className={`${isDark?"text-[#cfcfcf]":"text-[#757575]"} max-w-[520px]`}>
                         Sorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
                     </p>
                     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
                           <div className="flex flex-col gap-1.5">
-                              <label className="font-[600] text-sm">Project Name</label>
+                              <label className={`text-sm ${isDark&&"text-[#cfcfcf]"}`}>Project Name</label>
                               <input
-                                 className="px-4 py-2 outline-none border-[1px] border-[#C1D5F6] rounded-[8px] " 
+                                 className={
+                                    `px-4 py-2 outline-none bg-inherit rounded-[8px] 
+                                    border-[1px] border-[#C1D5F6]`
+                                 } 
                                  type="text"
                                  placeholder="Give your Project a name"
                                  {...register("projectName", {
@@ -92,9 +103,12 @@ export const CreateProjectModalBody = ({setOpenDialog,setProjects,setSelectedPro
                            </div>
 
                            <div className="flex flex-col gap-1.5">
-                              <label className="font-[600] text-sm">URL</label>
+                              <label className={`text-sm ${isDark&&"text-[#cfcfcf]"}`}>URL</label>
                               <input
-                                 className="px-4 py-2 outline-none border-[1px] border-[#C1D5F6] rounded-[8px] " 
+                                 className={
+                                    `px-4 py-2 outline-none bg-inherit rounded-[8px] 
+                                    border-[1px] border-[#C1D5F6]`
+                                 }  
                                  type="text"
                                  placeholder="Enter URL"
                                  {...register("url", {
@@ -108,7 +122,7 @@ export const CreateProjectModalBody = ({setOpenDialog,setProjects,setSelectedPro
                                {errors.url&&<span className="text-red-600">{errors.url.message}</span>}
                            </div>
                            <div className="flex flex-col gap-1.5">
-                               <label className="font-[600] text-sm">CMS Type</label>
+                               <label className={`text-sm ${isDark&&"text-[#cfcfcf]"}`}>CMS Type</label>
                                <div className="flex flex-wrap gap-4">
                                     {
                                         cmsTypes.map((item,index)=>{
@@ -143,7 +157,7 @@ export const CreateProjectModalBody = ({setOpenDialog,setProjects,setSelectedPro
                                 <button 
                                     type="button" 
                                     onClick={()=>setOpenDialog(false)}
-                                    className="capitalize font-bold text-[#1E43FA]"
+                                    className={`capitalize font-[600] text-sm ${isDark?"text-white":"text-[#1E43FA]"}`}
                                 >
                                     skip
                                 </button>
