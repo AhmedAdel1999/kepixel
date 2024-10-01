@@ -18,7 +18,7 @@ const CreateSourcePage = () =>{
     }
     return(
         <div className="flex flex-col gap-4">
-            <Card>
+            <Card className="dark:border-none dark:bg-[#171C32]">
                 <CardHeader>
                     <div className="flex items-center gap-4">
                         <img 
@@ -26,10 +26,10 @@ const CreateSourcePage = () =>{
                             src={googletagimg} 
                         />
                         <div>
-                            <CardTitle className="mb-1 text-[#0E1B26)] text-[16px] font-[600]">
+                            <CardTitle className="mb-1 text-[#0E1B26)] text-[16px] font-[500]">
                                 Google Tag Manager Browser Template
                             </CardTitle>
-                            <CardDescription>
+                            <CardDescription className="text-sm dark:text-[#cfcfcf]">
                                 Build dynamic audiences using customer data sent
                                 from your Google Tag Manager
                             </CardDescription>
@@ -38,10 +38,10 @@ const CreateSourcePage = () =>{
                 </CardHeader>
             </Card>
             
-            <Card>
+            <Card className="dark:border-none dark:bg-[#171C32]">
                 <CardHeader>
                     <CardTitle className="text-[#0E1B26)] text-[16px] font-[600]">New Source</CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-sm dark:text-[#cfcfcf]">
                         You can invite multiple collegues at once,
                         using a comma to separate email addresses.
                     </CardDescription>
@@ -49,9 +49,9 @@ const CreateSourcePage = () =>{
                 <CardContent>
                     <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)} noValidate>
                         <div className="flex flex-col gap-1.5">
-                            <label className="font-[600] text-sm">Title</label>
+                            <label className="text-sm dark:text-[#cfcfcf]">Title</label>
                             <input
-                                className="px-4 py-1.5 outline-none border-[1px] border-[#C1D5F6] rounded-[8px] " 
+                                className="px-4 py-1.5 outline-none bg-inherit border-[1px] border-[#C1D5F6] rounded-[8px] " 
                                 type="text"
                                 placeholder="Give your Source a name"
                                 {...register("title", {
@@ -62,9 +62,9 @@ const CreateSourcePage = () =>{
                         </div>
                         <Button 
                             disabled={!titleVal || errors.title}
-                            className="w-fit"
+                            className="w-fit text-sm font-[600] dark:text-[#ECF5FF]"
                             style={{
-                                background: "linear-gradient(112deg, #16F2D1 -47.55%, #1294B9 35.23%, #0C259C 133.36%), var(--Brand-Primary, #1E43FA)"
+                                background: "linear-gradient(112deg, #16F2D1 -47.55%, #1294B9 35.23%, #0C259C 133.36%), var(--Brand-Primary, #1E43FA)",
                             }}
                         >
                             Creat Source
