@@ -11,22 +11,23 @@ const GeneralTab = () =>{
                </div>
                <div>
                   <input type="file" id="img-upload" className="hidden" />
-                  <label htmlFor="img-upload" className="capitalize cursor-pointer text-[#1E43FA]">upload</label>
+                  <label htmlFor="img-upload" className="capitalize cursor-pointer text-[12px] font-[600] text-[#1E43FA] dark:text-white">upload</label>
                </div>
-               <span className="capitalize cursor-pointer text-[#757575]">delete</span>
+               <span className="capitalize cursor-pointer text-[12px] font-[600] text-[#757575] dark:text-white">delete</span>
             </div>
-            <div className="border-b-[1px] bg-[#757575]"></div>
+            <div className="border-b-[1px] dark:border-[#242D5A]"></div>
 
             <form className="flex flex-col gap-4 max-w-[500px]">
                 <div className="w-full flex flex-col gap-1">
-                    <label className="capitalize">name</label>
+                    <label className="capitalize text-sm">name</label>
                     <input 
                       type="text"
-                      className="px-4 py-2 border outline-none rounded-md text-[#757575]"
+                      placeholder="Kemarq"
+                      className="px-4 py-2 bg-inherit border dark:border-[#242D5A] outline-none rounded-md text-[#757575]"
                     />
                 </div>
                 <Button 
-                   className="capitalize w-fit py-[12px] px-[45px] font-[500]"
+                   className="capitalize w-fit py-[12px] px-[45px] text-sm font-[600] dark:text-white"
                    style={{
                     background: "linear-gradient(112deg, #16F2D1 -47.55%, #1294B9 35.23%, #0C259C 133.36%), var(--Brand-Primary, #1E43FA)"
                    }}

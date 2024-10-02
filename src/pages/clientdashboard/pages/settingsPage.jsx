@@ -9,14 +9,15 @@ import AccountTab from "../components/settingstabs/accountTab";
 const SettingsPage = () =>{
     const [activeTab,setActiveTab] = useState("general")
     return(
-        <Card className="min-h-full">
+        <Card className="min-h-full dark:bg-[#171C32] dark:border-none">
             <CardContent className="min-h-full">
                 <Tabs className="min-h-full flex flex-row gap-4 pt-4" defaultValue="general">
-                            <TabsList className="bg-white !h-[inherit] flex flex-col justify-start !items-start w-[200px] p-0 pe-6 rounded-none border-r">
+                            <TabsList className="bg-white dark:bg-inherit !h-[inherit] flex flex-col justify-start !items-start w-[200px] p-0 pe-6 rounded-none border-r">
                                 <TabsTrigger 
                                 className={`flex justify-start items-center !shadow-none w-full gap-2 px-2 py-1 cursor-pointer
                                     ${["general","billing","members"].includes(activeTab)?
-                                    "!bg-[#F9F9F9] !text-[#1E43FA]":"text-[#757575]"}
+                                    "!bg-[#F9F9F9] dark:!bg-[#0B1029] !text-[#1E43FA] dark:!text-white"
+                                    :"text-[#757575] dark:text-[#cfcfcf]"}
                                 `}
                                 value="general"
                                 onClick={()=>setActiveTab("general")}
@@ -31,8 +32,8 @@ const SettingsPage = () =>{
                                             <TabsTrigger 
                                                 key={index} value={item}
                                                 onClick={()=>setActiveTab(item)}
-                                                className={`capitalize !rounded-none !shadow-none p-0 justify-start
-                                                ${activeTab===item?"!text-[#1E43FA]":"text-[#757575]"}
+                                                className={`capitalize !bg-inherit !rounded-none !shadow-none p-0 justify-start
+                                                ${activeTab===item?"!text-[#1E43FA] dark:!text-white":"text-[#757575] dark:text-[#cfcfcf]"}
                                                 `}
                                             >
                                                 {item}
@@ -46,7 +47,8 @@ const SettingsPage = () =>{
                                     onClick={()=>setActiveTab("account")}
                                     className={`flex justify-start items-center !shadow-none w-full gap-2 px-2 py-1.5
                                         ${activeTab==="account"?
-                                        "!bg-[#F9F9F9] !text-[#1E43FA]":"text-[#757575]"}
+                                        "!bg-[#F9F9F9] dark:!bg-[#0B1029] !text-[#1E43FA] dark:!text-white":
+                                        "text-[#757575] dark:text-[#cfcfcf]"}
                                     `}
                                 >
                                     <Icon icon="mingcute:user-4-line" fontSize={20} />

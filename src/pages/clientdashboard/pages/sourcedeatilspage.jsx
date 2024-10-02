@@ -16,7 +16,7 @@ const SourceDetailsPage = () =>{
 
     return(
         <div className="flex flex-col gap-4">
-           <Card>
+           <Card className="dark:border-none dark:bg-[#171C32]">
                 <CardHeader>
                     <div className="flex justify-between items-center">
                         <div className="flex items-center gap-4">
@@ -25,10 +25,10 @@ const SourceDetailsPage = () =>{
                                 src={googletagimg} 
                             />
                             <div>
-                                <CardTitle className="mb-1 text-[#0E1B26)] text-[16px] font-[600]">
+                                <CardTitle className="mb-1 text-[#0E1B26)] text-[16px] font-[500]">
                                     Google Tag Manager Browser Template
                                 </CardTitle>
-                                <CardDescription>
+                                <CardDescription className="text-sm dark:text-[#cfcfcf]">
                                     Build dynamic audiences using customer data sent
                                     from your Google Tag Manager
                                 </CardDescription>
@@ -42,10 +42,10 @@ const SourceDetailsPage = () =>{
                 </CardHeader>
            </Card>
 
-           <Card>
+           <Card className="dark:border-none dark:bg-[#171C32]">
                 <CardHeader>
-                    <CardTitle className="text-[#0E1B26)] text-[16px] font-[600]">Source details</CardTitle>
-                    <CardDescription className="max-w-[600px]">
+                    <CardTitle className="text-[#0E1B26)] text-[18px] font-[600]">Source details</CardTitle>
+                    <CardDescription className="max-w-[600px] text-sm dark:text-[#cfcfcf]">
                         Sources can be websites, libraries, mobile SDKs, POS,
                         or cloud applications that send data into Journify.
                         Gather customer data to understand how your product
@@ -54,7 +54,7 @@ const SourceDetailsPage = () =>{
                 </CardHeader>
                 <CardContent>
                     <Tabs defaultValue="overview">
-                        <TabsList className="bg-white">
+                        <TabsList className="bg-white dark:bg-inherit">
                             {
                                 ["overview","syncs","debugger","settings"].map((item,index)=>{
                                     return(
@@ -62,7 +62,8 @@ const SourceDetailsPage = () =>{
                                           key={index} value={item}
                                           onClick={()=>setActiveTab(item)}
                                           className={`capitalize !rounded-none !shadow-none ${activeTab===item?
-                                          "!text-[#1E43FA] border-[#1E43FA] border-b-[1px]":""}`}
+                                          "!text-[#1E43FA] border-[#1E43FA] border-b-[1px]":""} 
+                                          dark:!text-white dark:!border-white dark:bg-inherit `}
                                        >
                                          {item}
                                        </TabsTrigger>

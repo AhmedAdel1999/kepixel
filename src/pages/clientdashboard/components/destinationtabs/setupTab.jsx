@@ -12,24 +12,29 @@ const SetupTab = ({status}) =>{
     return(
         <div className="flex flex-col pt-6 gap-8">
             <div className='flex flex-col gap-1'>
-              <label className='capitalize font-bold text-sm text-[#0E1B26]'>pixel id</label>
+              <label className='capitalize font-[500] text-sm text-[#0E1B26] dark:text-white'>
+                pixel id
+              </label>
               <input 
                type='text'
-               className='rounded-md py-2 px-4 border outline-none max-w-[700px]'
+               placeholder='1588537814970996'
+               className='rounded-md bg-inherit py-2 px-4 border outline-none max-w-[700px]'
               />
             </div>
             {
               status==="enabled"&&
               <Button 
                   disabled={status!=="enabled"}
-                  className="bg-white w-fit hover:bg-white font-bold text-sm text-[#1E43FA] border border-[#1E43FA]">
+                  className="bg-white dark:bg-inherit w-fit hover:bg-white font-[500] text-sm 
+                  text-[#1E43FA] dark:text-white border border-[#1E43FA] dark:border-white">
                   Request Edit
                </Button>
             }
             <div className='max-w-[800px] h-[1px] bg-[#C0DCFF]'></div>
+
             <div>
-               <h3 className="capitalize font-[600] text-sm mb-1">Connect your Account</h3>
-               <p className="mb-3">
+               <h3 className="capitalize font-[500] text-sm mb-1">Connect your Account</h3>
+               <p className="mb-3 text-sm dark:text-[#cfcfcf]">
                     Click on the button to turn on the connection and
                     check the correct configuration of your destination.
                </p>
@@ -49,7 +54,7 @@ const SetupTab = ({status}) =>{
                      }
                   `}>
                     <img alt='meta-logo' src={metalogo} />
-                    <span>Facebook Custom Audiences
+                    <span className='text-sm font-[500]'>Facebook Custom Audiences
                     </span>
                   </div>
                   <Xarrow
@@ -82,38 +87,44 @@ const SetupTab = ({status}) =>{
                {
                 status==="enabled"&&
                     <Button
-                      className="flex gap-1"
+                      className="flex gap-1 dark:text-white"
                       style={{
                           background: "linear-gradient(112deg, #16F2D1 -47.55%, #1294B9 35.23%, #0C259C 133.36%), var(--Brand-Primary, #1E43FA)"
                       }}
                     >
                       <Icon icon="material-symbols:link" fontSize={20} />
-                      <span>Re-Connect</span>
+                      <span className='text-sm font-[500]'>Re-Connect</span>
                     </Button>
                }
             </div>
+            
             <div className='max-w-[800px] h-[1px] bg-[#C0DCFF]'></div>
             <div>
-               <h3 className="capitalize font-[600] text-sm mb-1">Doubting Your Connection?</h3>
-               <p className="mb-3">
+               <h3 className="capitalize font-[500] text-sm mb-1">
+                   Doubting Your Connection?
+                </h3>
+               <p className="mb-3 text-sm dark:text-[#cfcfcf]">
                     Click on the button to turn on the connection and
                     check the correct configuration of your destination.
                </p>
                <Button 
                   disabled={status!=="enabled"}
-                  className="bg-white hover:bg-white font-bold text-sm text-[#1E43FA] border border-[#1E43FA]">
+                  className="bg-white dark:bg-inherit hover:bg-white font-bold text-sm 
+                  text-[#1E43FA] dark:text-white border border-[#1E43FA] dark:border-white">
                   Test Connection
                </Button>
             </div>
             <div>
-                <h3 className="capitalize font-[600] text-sm mb-2">About</h3>
+                <h3 className="capitalize font-[500] text-sm mb-2">About</h3>
                 <div className="flex items-center gap-2">
                     <img 
                       alt="about-logo"
                       className="w-[35px] h-[35px] rounded-[50%]"
                       src={logo}
                     />
-                    <p className="m-0 text-[#757575] text-sm">Created by Mohamed Ashraf, 2 minutes ago</p>
+                    <p className="m-0 text-[#757575] dark:text-[#cfcfcf] text-sm">
+                      Created by Mohamed Ashraf, 2 minutes ago
+                    </p>
                 </div>
             </div>
             {
@@ -121,7 +132,7 @@ const SetupTab = ({status}) =>{
               <React.Fragment>
                 <div className='max-w-[800px] h-[1px] bg-[#C0DCFF]'></div>
                 <Button
-                  className="capitalize !m-0 w-fit"
+                  className="capitalize !m-0 w-fit text-sm font-[600] dark:text-white"
                   style={{
                     background: "linear-gradient(112deg, #16F2D1 -47.55%, #1294B9 35.23%, #0C259C 133.36%), var(--Brand-Primary, #1E43FA)"
                   }}
