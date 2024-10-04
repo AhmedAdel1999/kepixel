@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
 
-export default function TableShared ({tableBody,tableHeader}) {
+export default function TableShared ({tableBody,tableHeader,showShadow,darkHeader}) {
 
     const itemsPerPage = 5
     const totalPages = Math.ceil(tableBody.length/itemsPerPage)
@@ -12,16 +12,16 @@ export default function TableShared ({tableBody,tableHeader}) {
     const isDark = theme === "dark"
     
     return(
-        <div style={{ boxShadow: "0px 0px 12px 0px rgba(0, 0, 0, 0.10)" }}
-        className="rounded-lg overflow-auto w-full"
+        <div 
+        className={`rounded-lg overflow-auto w-full shadow-table ${showShadow&&"dark:shadow-darktable"}`}
         >
             <Table className="w-full min-w-[1100px] overflow-hidden">
                 <TableHeader>
-                    <TableRow className="dark:bg-white">
+                    <TableRow className={`${darkHeader?"dark:bg-inherit dark:!border-none":"dark:bg-white"}`}>
                         {
                             tableHeader.map((item,index)=>{
                                 return(
-                                    <TableHead className="font-bold text-black" key={index}>
+                                    <TableHead className={`font-bold text-black ${darkHeader&&"dark:text-white"}`} key={index}>
                                         {item}
                                     </TableHead>
                                 )

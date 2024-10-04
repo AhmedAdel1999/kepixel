@@ -22,6 +22,10 @@ module.exports = {
       '2xl': '1536px',
     },
     extend: {
+      boxShadow:{
+        "darktable":"0px 0px 12px 0px rgba(255, 255, 255, 0.10)",
+        "table":"0px 0px 12px 0px rgba(0, 0, 0, 0.10)"
+      },
       colors: {
         "base-color":"#db2778",
         border: "hsl(var(--border))",

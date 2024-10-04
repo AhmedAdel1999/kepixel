@@ -96,9 +96,17 @@ const MembersTab = () =>{
         <div className="flex flex-col gap-6">
             <h3 className="font-[600] text-lg">Members</h3>
 
-            <TableShared tableBody={tableBody} tableHeader={tableHeader} />
+            <div className="max-w-[900px] sm:max-w-[350px] md:max-w-[650px] lg:max-w-[900px]">
+                <TableShared 
+                    tableBody={tableBody} 
+                    tableHeader={tableHeader}
+                    darkHeader={true}
+                    showShadow={true}
+                    maxWidth={""}
+                />
+            </div>
 
-            <div className="h-[1px] bg-[#757575]"></div>
+            <div className="h-[1px] bg-[#757575] dark:bg-[#242D5A]"></div>
 
             <div className="flex flex-col gap-6">
               <h3 className="font-[600] text-lg">Invite by email address</h3>
@@ -109,7 +117,8 @@ const MembersTab = () =>{
                         <label className="capitalize text-sm">Email(s)</label>
                         <input 
                             type="text"
-                            className="px-4 py-2 border outline-none rounded-md text-[#757575]"
+                            placeholder="mohamed@gmail.com"
+                            className="px-4 py-2 border bg-inherit dark:border-[#242D5A] outline-none rounded-md text-[#757575]"
                         />
                     </div>
 
@@ -118,7 +127,7 @@ const MembersTab = () =>{
                         <Select
                            value="administrator"
                         >
-                            <SelectTrigger className="border-[1px] focus:ring-0 focus:border-transparent">
+                            <SelectTrigger className="border-[1px] focus:ring-0 focus:border-transparent dark:bg-inherit">
                                 <SelectValue placeholder="administrator" />
                             </SelectTrigger>
                             <SelectContent>
@@ -135,7 +144,7 @@ const MembersTab = () =>{
                     </div>
                 </div>
                 <Button 
-                        className="capitalize w-fit font-[500] py-[12px] px-[45px]"
+                        className="capitalize w-fit py-[12px] px-[45px] text-sm font-[600] dark:text-white"
                         style={{
                             background: "linear-gradient(112deg, #16F2D1 -47.55%, #1294B9 35.23%, #0C259C 133.36%), var(--Brand-Primary, #1E43FA)"
                         }}

@@ -48,7 +48,7 @@ const BillingTab = () =>{
             <h3 className="font-[600] text-lg m-0">Billing Settings</h3>
 
             <div className="grid grid-cols-12 gap-6">
-                <div className="xs:col-span-12 md:col-span-6 p-6 rounded-md shadow-[0_0_4px_rgba(0,0,0,0.25)]">
+                <div className="xs:col-span-12 md:col-span-6 p-6 rounded-md dark:bg-[#0B1029] shadow-[0_0_4px_rgba(0,0,0,0.25)]">
                    <h3 className="font-[600] text-[14px] mb-2">Billing Information</h3>
                    <form className="w-full flex flex-col gap-1.5">
 
@@ -57,7 +57,7 @@ const BillingTab = () =>{
                             <input 
                                 type="text"
                                 {...register("company")}
-                                className="px-4 py-2 border outline-none rounded-md text-[#757575]"
+                                className="px-4 py-2 border outline-none rounded-md text-[#757575] bg-inherit dark:border-[#242D5A]"
                             />
                         </div>
 
@@ -66,7 +66,7 @@ const BillingTab = () =>{
                             <input 
                                 type="text"
                                 {...register("billing_email")}
-                                className="px-4 py-2 border outline-none rounded-md text-[#757575]"
+                                className="px-4 py-2 border outline-none rounded-md text-[#757575] bg-inherit dark:border-[#242D5A]"
                             />
                         </div>
 
@@ -75,7 +75,7 @@ const BillingTab = () =>{
                             <input 
                                 type="text"
                                 {...register("address")}
-                                className="px-4 py-2 border outline-none rounded-md text-[#757575]"
+                                className="px-4 py-2 border outline-none rounded-md text-[#757575] bg-inherit dark:border-[#242D5A]"
                             />
                         </div>
 
@@ -85,7 +85,7 @@ const BillingTab = () =>{
                                 <input 
                                     type="text"
                                     {...register("city")}
-                                    className="px-4 py-2 border outline-none rounded-md text-[#757575]"
+                                    className="px-4 py-2 border outline-none rounded-md text-[#757575] bg-inherit dark:border-[#242D5A]"
                                 />
                             </div>
                             <div className="col-span-6 flex flex-col gap-1">
@@ -93,7 +93,7 @@ const BillingTab = () =>{
                                 <input 
                                     type="text"
                                     {...register("state")}
-                                    className="px-4 py-2 border outline-none rounded-md text-[#757575]"
+                                    className="px-4 py-2 border outline-none rounded-md text-[#757575] bg-inherit dark:border-[#242D5A]"
                                 />
                             </div>
                         </div>
@@ -104,7 +104,7 @@ const BillingTab = () =>{
                                 <input 
                                     type="text"
                                     {...register("zib_code")}
-                                    className="px-4 py-2 border outline-none rounded-md text-[#757575]"
+                                    className="px-4 py-2 border outline-none rounded-md text-[#757575] bg-inherit dark:border-[#242D5A]"
                                 />
                             </div>
                             <div className="col-span-6 flex flex-col gap-1">
@@ -112,7 +112,7 @@ const BillingTab = () =>{
                                 <input 
                                     type="text"
                                     {...register("country")}
-                                    className="px-4 py-2 border outline-none rounded-md text-[#757575]"
+                                    className="px-4 py-2 border outline-none rounded-md text-[#757575] bg-inherit dark:border-[#242D5A]"
                                 />
                             </div>
                         </div>
@@ -123,7 +123,7 @@ const BillingTab = () =>{
                                 <input 
                                     type="text"
                                     {...register("tax_type")}
-                                    className="px-4 py-2 border outline-none rounded-md text-[#757575]"
+                                    className="px-4 py-2 border outline-none rounded-md text-[#757575] bg-inherit dark:border-[#242D5A]"
                                 />
                             </div>
                             <div className="col-span-6 flex flex-col gap-1">
@@ -131,13 +131,13 @@ const BillingTab = () =>{
                                 <input 
                                     type="text"
                                     {...register("tax_id")}
-                                    className="px-4 py-2 border outline-none rounded-md text-[#757575]"
+                                    className="px-4 py-2 border outline-none rounded-md text-[#757575] bg-inherit dark:border-[#242D5A]"
                                 />
                             </div>
                         </div>
 
                         <Button 
-                            className="capitalize w-fit py-[12px] px-[45px] font-[500]"
+                            className="capitalize w-fit py-[12px] px-[45px] text-sm mt-2 font-[600] dark:text-[#ECF5FF]"
                             style={{
                                 background: "linear-gradient(112deg, #16F2D1 -47.55%, #1294B9 35.23%, #0C259C 133.36%), var(--Brand-Primary, #1E43FA)"
                             }}
@@ -147,19 +147,19 @@ const BillingTab = () =>{
 
                    </form>
                 </div>
-                <div className="xs:col-span-12 md:col-span-6 p-6 rounded-md shadow-[0_0_4px_rgba(0,0,0,0.25)]">
+                <div className="xs:col-span-12 md:col-span-6 p-6 rounded-md dark:bg-[#0B1029] shadow-[0_0_4px_rgba(0,0,0,0.25)]">
                    <h3 className="font-[600] text-[14px] mb-2">Payment methods</h3>
-                   <div className="p-6 rounded-md border-[1px] border-[#CFCFCF]">
+                   <div className="p-6 rounded-md border-[1px] border-[#CFCFCF] dark:border-[#242D5A]">
                       <div className="mb-6">
                         <h4 className="font-[600] text-[14px] mb-2">No payment methods yet?</h4>
-                        <p className="text-[#757575]">
+                        <p className="text-[#757575] dark:text-[#cfcfcf]">
                             to enable automatic renewal of your subscription,
                             please ensure that you have at least one valid payment method on file.
                         </p>
                       </div>
                       <Button 
-                            className="capitalize w-fit py-[12px] px-4 font-[500] 
-                            text-[#1E43FA] border border-[#1E43FA] !bg-inherit
+                            className="capitalize w-fit py-[12px] px-4 font-[500] text-[#1E43FA] dark:text-white
+                             border border-[#1E43FA] dark:border-white !bg-inherit
                             "
                         >
                             Setup a payment method
@@ -168,9 +168,16 @@ const BillingTab = () =>{
                 </div>
             </div>
 
-            <div className="p-6  rounded-md shadow-[0_0_4px_rgba(0,0,0,0.25)]">
+            <div className="p-6  rounded-md shadow-[0_0_4px_rgba(0,0,0,0.25)] dark:bg-[#0B1029] max-w-full overflow-hidden">
                 <h3 className="capitalize font-[600] text-sm mb-2">Billing History</h3>
-                <TableShared tableBody={tableBody} tableHeader={tableHeader} />
+                <div className="max-w-[900px] sm:max-w-[350px] md:max-w-[650px] lg:max-w-[900px]">
+                    <TableShared 
+                        darkHeader={true}
+                        showShadow={true} 
+                        tableBody={tableBody} 
+                        tableHeader={tableHeader} 
+                    />
+                </div>
             </div>
 
         </div>
